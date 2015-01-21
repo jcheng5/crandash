@@ -2,7 +2,7 @@ dashboardPage(
   dashboardHeader(title = "cran.rstudio.com"),
   dashboardSidebar(
     sliderInput("rateThreshold", "Warn when rate exceeds",
-      min = 0, max = 10, value = 2, step = 0.1
+      min = 0, max = 50, value = 3, step = 0.1
     ),
     sidebarMenu(
       menuItem("Dashboard", tabName = "dashboard"),
