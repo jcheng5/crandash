@@ -7,7 +7,7 @@ The streaming data is a 1-week-delayed livestream of download logs from cran.rst
 ## Installation
 
 ```r
-install.packages(c("shiny", "dplyr", "htmlwidgets"))
+install.packages(c("shiny", "dplyr", "htmlwidgets", "digest", "bit"))
 devtools::install_github("rstudio/shinydashboard")
 devtools::install_github("jcheng5/bubbles")
 devtools::install_github("hadley/shinySignals")
