@@ -7,6 +7,10 @@ rawToInt <- function(bytes) {
   }, as.integer(bytes), 0L)
 }
 
+# Quick and dirty bloom filter. The hashing "functions" are based on choosing
+# random sets of bytes out of a single MD5 hash. Seems to work well for normal
+# values, but has not been extensively tested for weird situations like very
+# small n or very large p.
 BloomFilter <- setRefClass("BloomFilter",
   fields = list(
     .m = "integer",
@@ -24,9 +28,7 @@ BloomFilter <- setRefClass("BloomFilter",
       .m <<- as.integer(m)
       .bits <<- bit(.m)
       .k <<- max(1L, as.integer(round((as.numeric(.m)/n) * log(2))))
-      if (.k <= 2L) {
-        warning("Bloom filter size of ", m, " is too small for expected elements ", n)
-      }
+
       # This is how many *bytes* of data we need for *each* of the k indices we need to
       # generate
       .bytesNeeded <<- as.integer(ceiling(log2(.m) / 8))
