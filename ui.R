@@ -20,12 +20,12 @@ dashboardPage(
         fluidRow(
           box(
             width = 8, status = "info", solidHeader = TRUE,
-            title = "Popularity by package",
+            title = "Popularity by package (last 5 min)",
             bubblesOutput("packagePlot", width = "100%", height = 600)
           ),
           box(
             width = 4, status = "info",
-            title = "Top packages",
+            title = "Top packages (last 5 min)",
             tableOutput("packageTable")
           )
         )
